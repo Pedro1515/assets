@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { createContext, useContext } from "react";
-import { ArticlesTags } from '../components/articlesTags'
-import { Articles } from '../components/articles'
-import { handleFilterTagsInArticles } from '../helpers/filterTags'
+import { createContext } from "react";
+import { ArticlesTags } from "../components/articlesTags";
+import { Articles } from "../components/articles";
+import { handleFilterTagsInArticles } from "../helpers/filterTags";
 import { getArticles } from "../api/articles";
 import styles from "../styles/Home.module.css";
 
-const HomePageContext = createContext({ articles: [], tags: [] });
+export const HomePageContext = createContext({ articles: [], tags: [] });
 
 function MainHeaderBanner() {
   return (
@@ -17,23 +17,19 @@ function MainHeaderBanner() {
 }
 
 function MainTitle() {
-  const { tags } = useContext(HomePageContext);
-  
   return (
     <div className={styles.mainTitle}>
       <h1>Acumulado Grilla</h1>
-      <ArticlesTags tags={tags} />
+      <ArticlesTags />
     </div>
   );
 }
 
 function MainSide() {
-  const { articles } = useContext(HomePageContext);
-
   return (
     <div className={styles.mainSide}>
       <section className={styles.mainSection}>
-        <Articles articles={articles} />
+        <Articles />
       </section>
       <div className={styles.mainSideAds}></div>
     </div>
@@ -48,7 +44,7 @@ function HomeHeader() {
   );
 }
 
-function Home() {
+function HomePage() {
   return (
     <>
       <Head>
@@ -65,7 +61,7 @@ function Home() {
   );
 }
 
-export default function HomePage({ articles }) {
+export default function HomePageWithContext({ articles }) {
   const articles7 = articles.filter((article) => article.subtype === "7");
   const tagsFiltered = handleFilterTagsInArticles(articles7);
 
@@ -73,7 +69,7 @@ export default function HomePage({ articles }) {
     <HomePageContext.Provider
       value={{ articles: articles7, tags: tagsFiltered }}
     >
-      <Home />
+      <HomePage />
     </HomePageContext.Provider>
   );
 }

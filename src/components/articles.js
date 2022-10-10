@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import handleFormatDate from "../helpers/formatDate";
+import { HomePageContext } from "../pages";
 import styles from "../styles/Home.module.css";
 
 function Article({ article }) {
@@ -25,7 +27,9 @@ function Article({ article }) {
   );
 }
 
-export function Articles({ articles }) {
+export function Articles() {
+  const { articles } = useContext(HomePageContext);
+
   return articles.map((article) => (
     <Article key={article._id} article={article} />
   ));

@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { HomePageContext } from "../pages";
 import styles from "../styles/Home.module.css";
 
-export function ArticlesTags({ tags }) {
+export function ArticlesTags() {
+  const { tags } = useContext(HomePageContext);
   console.log(tags);
 
   return tags.map((tag) => (
