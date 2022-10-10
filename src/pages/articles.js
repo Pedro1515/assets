@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import handleFormatDate from "../helpers/formatDate";
-import { HomePageContext } from "../pages";
+import { HomePageContext } from ".";
 import styles from "../styles/Home.module.css";
 
 function Article({ article }) {

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { createContext } from "react";
-import { ArticlesTags } from "../components/articlesTags";
-import { Articles } from "../components/articles";
+import { ArticlesTags } from "./articlesTags";
+import { Articles } from "./articles";
 import { handleFilterTagsInArticles } from "../helpers/filterTags";
 import { getArticles } from "../api/articles";
 import styles from "../styles/Home.module.css";
